@@ -1,1 +1,4 @@
 sandbox/*
+ex0*/*.d
+ex0*/*.o
+ex0*/fixedPointNumber
