@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include "Point.hpp"
 
 void assert(bool assert){
 	if (assert)
@@ -80,7 +81,7 @@ void testDivideOperator(){
 }
 
 void testIncrementOperator(){
-	Fixed a;
+	Fixed a(2.2f);
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
@@ -103,18 +104,32 @@ void testDecrementOperator(){
 	std::cout << Fixed::min(a, b) << std::endl;
 }
 
+void testBSP(){
+	Point a(-2, 1);
+	Point b(0, 2);
+	Point c(0, -1);
+	Point p(-0.9f, 1);
+
+	std::cout << "a: x " << a.getX().toFloat() << ", y " << a.getY().toFloat() << std::endl;
+	std::cout << "b: x " << b.getX().toFloat() << ", y " << b.getY().toFloat() << std::endl;
+	std::cout << "c: x " << c.getX().toFloat() << ", y " << c.getY().toFloat() << std::endl;
+	std::cout << "p: x " << p.getX().toFloat() << ", y " << p.getY().toFloat() << std::endl;
+	assert(bsp(a, b, c, p));
+}
+
 void runTest()
 {
-	testEqualityOperator();
-	testNotEqualityOperator();
-	testGreaterThanOperator();
-	testGreaterThanToEqualToOperator();
-	testLessThanOperator();
-	testLessThanToEqualToOperator();
-	testPlusOperator();
-	testMinusOperator();
-	testMultiplyOperator();
-	testDivideOperator();
-	testIncrementOperator();
-	testDecrementOperator();
+	testBSP();
+	// testEqualityOperator();
+	// testNotEqualityOperator();
+	// testGreaterThanOperator();
+	// testGreaterThanToEqualToOperator();
+	// testLessThanOperator();
+	// testLessThanToEqualToOperator();
+	// testPlusOperator();
+	// testMinusOperator();
+	// testMultiplyOperator();
+	// testDivideOperator();
+	// testIncrementOperator();
+	// testDecrementOperator();
 }
